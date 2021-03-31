@@ -41,14 +41,14 @@ app.use(errorController.get404);
 
 
 // create association
-Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE'});
+Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
 User.hasMany(Product);
 User.hasOne(Cart);
 Cart.belongsTo(User);
 Cart.belongsToMany(Product, { through: CartItem });
 Product.belongsToMany(Cart, { through: CartItem });
-User.hasOne(Order);
 Order.belongsTo(User);
+User.hasMany(Order);
 Order.belongsToMany(Product, { through: OrderItem });
 
 
